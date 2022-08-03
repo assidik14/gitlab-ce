@@ -5,9 +5,9 @@ services:
     image: gitlab/gitlab-ce:latest
     restart: always
     hostname: gitlab.docker.local
-#    environment:
-#     GITLAB_OMNIBUS_CONFIG: |
-#        external_url 'https://gitlab.docker.local'
+    environment:
+     GITLAB_OMNIBUS_CONFIG: |
+        external_url 'https://gitlab.docker.local'
 #        gitlab_rails['lfs_enabled'] = true
 #        nginx['listen_port'] = 80
 #        nginx['listen_https'] = false
@@ -15,6 +15,7 @@ services:
 #        nginx['real_ip_trusted_addresses'] = [ '172.17.0.0/24', '172.17.0.1', '2001:0db8::/32' ]
 #        nginx['real_ip_header'] = 'X-Real-IP'
 #        nginx['real_ip_recursive'] = 'on'
+#        gitlab_rails['initial_root_password'] = "P@ssw0rd"
 #        gitlab_rails['gitlab_shell_ssh_port'] = 2211
 #        gitlab_rails['time_zone'] = 'Asia/Jakarta'
 #        gitlab_rails['omniauth_enabled'] = true
@@ -41,9 +42,9 @@ services:
       - 443:443
       - 22:22
     volumes:
-      - $GITLAB_HOME/config:/etc/gitlab
-      - $GITLAB_HOME/logs:/var/log/gitlab
-      - $GITLAB_HOME/data:/var/opt/gitlab
+      - /home/sidik/gitlab/config:/etc/gitlab
+      - /home/sidik/gitlab/log:/var/log/gitlab
+      - /home/sidik/gitlab/data:/var/opt/gitlab
     shm_size: 256m
     networks:
       - gitlab-networks
